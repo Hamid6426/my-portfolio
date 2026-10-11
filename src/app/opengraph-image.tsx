@@ -24,46 +24,109 @@ export default async function OpenGraphImage() {
         height: "100%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        padding: "70px 80px",
+        justifyContent: "center",
         background: "#DCD3BD",
         color: "#111110",
         fontFamily: "Bricolage",
+        position: "relative",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: 670 }}>
-        <div style={{ display: "flex", fontSize: 30, marginBottom: 36 }}>
-          {aboutData.preferredName}
-          <span style={{ color: "#E2441D" }}>.</span>
-        </div>
-        <div style={{ fontSize: 58, letterSpacing: -3, lineHeight: 1.2 }}>
-          {aboutData.fullName}
-        </div>
-        <div style={{ fontSize: 30, color: "#111110", marginTop: 25 }}>
-          {aboutData.role}
-        </div>
-        <div style={{ fontSize: 20, color: "#524D45", marginTop: 40 }}>
-          {aboutData.location}
-        </div>
-      </div>
+      {/* Decorative subtle border line on full 1200x630 banner */}
+      <div
+        style={{
+          position: "absolute",
+          top: 32,
+          bottom: 32,
+          left: 48,
+          right: 48,
+          border: "1px solid rgba(17, 17, 16, 0.12)",
+          display: "flex",
+        }}
+      />
+
+      {/* Central 1:1 Safe-Zone Container (~560px wide, centered) */}
       <div
         style={{
           display: "flex",
-          width: 300,
-          height: 390,
-          borderRadius: "150px 150px 16px 16px",
-          overflow: "hidden",
-          border: "3px solid #E2441D",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          maxWidth: 580,
+          padding: "20px 24px",
         }}
       >
-        {}
-        <img
-          src={`data:image/jpeg;base64,${portrait}`}
-          alt=""
-          width={294}
-          height={384}
-          style={{ objectFit: "cover" }}
-        />
+        {/* Rounded portrait with signature accent border */}
+        <div
+          style={{
+            display: "flex",
+            width: 170,
+            height: 170,
+            borderRadius: 9999,
+            overflow: "hidden",
+            border: "4px solid #E2441D",
+            boxShadow: "0 12px 32px rgba(17, 17, 16, 0.15)",
+            marginBottom: 24,
+          }}
+        >
+          <img
+            src={`data:image/jpeg;base64,${portrait}`}
+            alt=""
+            width={170}
+            height={170}
+            style={{ objectFit: "cover", objectPosition: "top" }}
+          />
+        </div>
+
+        {/* Wordmark badge */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 22,
+            letterSpacing: 2,
+            color: "#524D45",
+            marginBottom: 8,
+            textTransform: "uppercase",
+          }}
+        >
+          {aboutData.preferredName}
+          <span style={{ color: "#E2441D" }}>.</span>
+        </div>
+
+        {/* Full Name */}
+        <div
+          style={{
+            fontSize: 48,
+            letterSpacing: -1.5,
+            lineHeight: 1.1,
+            color: "#111110",
+            marginBottom: 12,
+          }}
+        >
+          {aboutData.fullName}
+        </div>
+
+        {/* Role */}
+        <div
+          style={{
+            fontSize: 24,
+            lineHeight: 1.2,
+            color: "#111110",
+            marginBottom: 10,
+          }}
+        >
+          {aboutData.role}
+        </div>
+
+        {/* Location badge / text */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 18,
+            color: "#524D45",
+          }}
+        >
+          {aboutData.location}
+        </div>
       </div>
     </div>,
     {
