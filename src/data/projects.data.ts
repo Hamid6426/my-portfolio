@@ -53,7 +53,8 @@ export const projectsData: ProjectItem[] = [
     url: "https://www.3qnextgen.com",
     tags: ["Responsive UI", "SEO", "B2B"],
     image: "/projects/3qnextgen-hero.png",
-    imageAlt: "3Q NextGen website showcasing freight and global supply services",
+    imageAlt:
+      "3Q NextGen website showcasing freight and global supply services",
   },
   {
     id: 5,
