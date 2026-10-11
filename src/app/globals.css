@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #dcd3bd;
+  --ink: #111110;
+  --muted: #524d45;
+  --accent: #e2441d;
+  --line: rgb(17 17 16 / 0.15);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  
+  --font-heading: var(--font-bricolage), "Arial Black", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --spacing-gutter: clamp(1.25rem, 4vw, 4rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.mono {
+  @apply font-mono text-[12px] sm:text-[13px] uppercase tracking-[0.14em];
+}
+
+.display {
+  @apply font-heading font-extrabold tracking-tighter leading-[0.8];
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3.5rem;
+  background: var(--paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  width: 100%;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #111110;
+}
+
+:focus-visible:not(input):not(textarea) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.cursor-label {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-label {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .no-js-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding-block: 15px;
+    font-size: 12px;
+  }
+}
+
+/* HERO AND LET'S TALK */
+.t1 {
+  @apply font-heading font-extrabold tracking-tighter leading-[0.8] text-[20vw] min-[384px]:text-[7rem] sm:text-[8rem] md:text-[9rem] lg:text-[10rem] xl:text-[11rem];
+}
+
+/* SECTION TITLES */
+.t2 {
+  @apply font-heading font-extrabold tracking-tighter leading-[0.9] text-[14vw] min-[384px]:text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem];
+}
+
+/* SECTION ITEM TITLES */
+.t3 {
+  @apply font-heading font-bold tracking-tighter leading-tight text-[8vw] min-[384px]:text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem];
+}
+
+/* Summaries */
+.t4 {
+   @apply font-body font-medium tracking-tight leading-tight text-[5.5vw] min-[384px]:text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.625rem] xl:text-[3rem];
+}
+
+/* Descriptions */
+.t5 {
+   @apply font-body font-medium tracking-tight leading-normal text-[5vw] min-[384px]:text-[1rem] sm:text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] xl:text-[2rem];
+}
+
+/* Bullets */
+.t7 {
+   @apply font-body font-medium tracking-tight leading-snug text-[4vw] min-[384px]:text-[0.75rem] sm:text-[1.875rem] md:text-[1.125rem] lg:text-[1.3125rem] xl:text-[1.5rem];
+}
+
+.t8 {
+  @apply font-mono font-normal tracking-tight leading-relaxed text-[4vw] min-[384px]:text-[0.75rem] sm:text-[1.875rem] md:text-[1.125rem] lg:text-[1.3125rem] xl:text-[1.5rem];
+}
+
+/* input labels, most of footer */
+.t9 {
+  @apply font-mono uppercase font-normal tracking-tight leading-relaxed text-[2vw] min-[384px]:text-[0.5rem] sm:text-[0.6rem] md:text-[0.7rem] lg:text-[0.8rem] xl:text-[0.9rem];
 }

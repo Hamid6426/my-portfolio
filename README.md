@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mian Hamid ur Rehman Portfolio
 
-## Getting Started
+Portfolio recreated from the original Vite site with Next.js 16 App Router, React 19, Tailwind CSS 4, TypeScript, and Bun.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verify and serve
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun run lint
+bun run typecheck
+bun run build
+bun run start
+```
 
-## Learn More
+The light-themed home page uses reusable components in `src/components/` and section content from `src/data/`. The same section data supplies metadata, the Open Graph image, and the generated resume. Tailwind CSS 4's palette and font configuration lives in the `@theme` block in `src/app/globals.css`.
 
-To learn more about Next.js, take a look at the following resources:
+`public/profile.jpg` supplies the hover/focus profile card, generated favicon, and Open Graph card. Bricolage Grotesque ExtraBold headings and Inter body text are served locally through `next/font/local` from the downloaded folders in `src/fonts/`, each with its `OFL.txt` license. Labels use the system monospace font.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Navigation scrolls to the Work, About, Experience, and Contact sections. The Download CV button serves a text resume at `/api/resume`. Set `aboutData.resume` to a PDF URL when an actual PDF is available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The contact form sends to `/api/contact-submission`. Copy `.env.example` to `.env` and configure the SMTP values to enable delivery. Failures keep the visitor's message available for retry; success is shown only after the server confirms delivery. Run the API regression tests with `bun test`.
 
-## Deploy on Vercel
+Set `NEXT_PUBLIC_SITE_URL` to the deployed site's origin (for example, `https://your-domain.com`) to generate absolute Open Graph URLs. The local default is `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Browser accessibility checks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Run against the production server for the JavaScript-disabled CSS checks:
+
+```bash
+npm install --prefix /tmp/portfolio-a11y --no-audit --no-fund playwright axe-core
+NODE_PATH=/tmp/portfolio-a11y/node_modules node scripts/accessibility-check.cjs
+```
+
+Set `A11Y_URL` for another URL or `CHROME_PATH` for another Chrome executable. The checks cover axe rules and overflow at seven viewport sizes, keyboard navigation, mobile menus, reduced motion, text spacing, JavaScript-disabled navigation, image metadata routes, downloads, and browser runtime errors. Screenshots are saved to `/tmp/portfolio-desktop.png` and `/tmp/portfolio-mobile.png`.
