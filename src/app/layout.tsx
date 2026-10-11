@@ -34,7 +34,7 @@ function siteUrl(): string {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: `${aboutData.fullName} | ${aboutData.role}`,
-  description: aboutData.longSummary,
+  description: aboutData.shortSummary,
   authors: [{ name: aboutData.fullName }],
   keywords: [
     aboutData.fullName,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: `${aboutData.fullName} | ${aboutData.role}`,
-    description: aboutData.longSummary,
+    description: aboutData.shortSummary,
     type: "website",
     locale: "en_US",
     siteName: `${aboutData.preferredName}.`,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${aboutData.fullName} | ${aboutData.role}`,
-    description: aboutData.longSummary,
+    description: aboutData.shortSummary,
   },
   robots: { index: true, follow: true },
 };
