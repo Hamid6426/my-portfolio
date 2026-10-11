@@ -7,6 +7,7 @@ import { aboutData } from "@/data/about.data";
 import { contactData } from "@/data/contact.data";
 import { socialData } from "@/data/socials.data";
 import { Icon, type IconName } from "./icon";
+import { Slide } from "./Motion";
 
 const profileCard = [
   { label: "Role", value: aboutData.role },
@@ -27,7 +28,7 @@ export function VerticalNameCard({ open, x, y }: CardMotionProps) {
         <motion.div
           id="profile-card"
           role="tooltip"
-          className="pointer-events-none fixed top-0 left-0 z-40 flex w-[min(18rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl bg-ink text-paper shadow-2xl xl:hidden"
+          className="pointer-events-none fixed top-0 left-0 z-40 flex w-[min(18rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl bg-inverse text-base shadow-2xl xl:hidden"
           style={{ x, y }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,8 +48,8 @@ export function VerticalNameCard({ open, x, y }: CardMotionProps) {
           <dl className="flex flex-1 flex-col justify-center space-y-3 p-4">
             {profileCard.map((r) => (
               <div key={r.label}>
-                <dt className="mono text-paper/65">{r.label}</dt>
-                <dd className="text-base leading-snug">{r.value}</dd>
+                <dt className="t8 text-base/65">{r.label}</dt>
+                <dd className="leading-snug text-base">{r.value}</dd>
               </div>
             ))}
           </dl>
@@ -65,7 +66,7 @@ export function HorizontalNameCard({ open, x, y }: CardMotionProps) {
         <motion.div
           id="profile-card-desktop"
           role="tooltip"
-          className="pointer-events-none fixed top-0 left-0 z-40 hidden w-[min(32rem,calc(100vw-2rem))] overflow-hidden rounded-xl bg-ink text-paper shadow-2xl xl:flex xl:flex-row"
+          className="pointer-events-none fixed top-0 left-0 z-40 hidden w-[min(32rem,calc(100vw-2rem))] overflow-hidden rounded-xl bg-inverse text-base shadow-2xl xl:flex xl:flex-row"
           style={{ x, y }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -85,8 +86,8 @@ export function HorizontalNameCard({ open, x, y }: CardMotionProps) {
           <dl className="flex flex-1 flex-col justify-center space-y-3 p-4">
             {profileCard.map((r) => (
               <div key={r.label}>
-                <dt className="mono text-paper/65">{r.label}</dt>
-                <dd className="text-base leading-snug">{r.value}</dd>
+                <dt className="t8 text-base/65">{r.label}</dt>
+                <dd className="leading-snug text-base">{r.value}</dd>
               </div>
             ))}
           </dl>
@@ -103,12 +104,17 @@ export default function Hero() {
   const x = useMotionValue(-999);
   const y = useMotionValue(-999);
 
-  const nameLines = [aboutData.firstName, aboutData.lastName];
-  const nameTitle = nameLines.map((line) => (
-    <span key={line} className="t1 block pr-[5%] text-left">
-      {line}
-    </span>
-  ));
+  const nameTitle = [aboutData.firstName, aboutData.lastName].map(
+    (line, index) => (
+      <Slide
+        key={line}
+        delay={index * 0.2}
+        className="hero-name-line t1 block pr-[5%] text-left"
+      >
+        {line}
+      </Slide>
+    ),
+  );
 
   const place = (cx: number, cy: number) => {
     const isLg = window.innerWidth >= 1024;
@@ -157,7 +163,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative flex flex-col px-[5%] pt-24 pb-48">
       <h1 className="xl:hidden">{nameTitle}</h1>
-      
+
       <button
         ref={nameRef}
         type="button"
@@ -184,10 +190,13 @@ export default function Hero() {
 
       <VerticalNameCard open={open} x={x} y={y} />
       <HorizontalNameCard open={open} x={x} y={y} />
-      
-      <p className="t4 pt-8 xl:pr-[23%]">
+
+      <Slide
+        animation="slide-up-short-summary"
+        className="t4 block pt-8 xl:pr-[23%]"
+      >
         {aboutData.shortSummary}
-      </p>
+      </Slide>
 
       <nav
         aria-label="Resume and contact links"
@@ -198,7 +207,7 @@ export default function Hero() {
           download="Mian_Hamid_Ur_Rehman_Full_Stack_Developer_CV.pdf"
           aria-label="Download CV"
           title="Download CV"
-          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ink text-paper transition-colors hover:bg-accent xl:mb-2 md:size-20"
+          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2"
         >
           <Icon name="fileDownload" className="size-6 md:size-10" />
         </a>
@@ -218,11 +227,12 @@ export default function Hero() {
                 ? "noopener noreferrer"
                 : undefined
             }
-            className="flex size-12 shrink-0 items-center justify-center rounded-full border border-ink transition-colors hover:bg-ink hover:text-paper md:size-16"
+            className="flex size-12 shrink-0 items-center justify-center rounded-full border border-inverse transition-colors hover:bg-inverse hover:text-base md:size-16"
           >
             <Icon name={link.icon as IconName} className="size-6 md:size-8" />
           </a>
         ))}
+
         <button
           ref={profileButtonRef}
           type="button"
@@ -239,7 +249,7 @@ export default function Hero() {
           aria-describedby={open ? "profile-card" : undefined}
           aria-label="Show Profile Card"
           title="Show Profile Card"
-          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ink text-paper transition-colors hover:bg-accent xl:mb-2 xl:hidden md:size-20"
+          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2 xl:hidden"
         >
           <Icon name="profile" className="size-6 md:size-10" />
         </button>

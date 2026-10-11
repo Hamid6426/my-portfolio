@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type SubmitEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Separator } from "./Separator";
+import Section from "./Section";
 
 type Values = { name: string; email: string; message: string };
 type Errors = Partial<Record<keyof Values, string>>;
@@ -31,9 +31,6 @@ const fields: {
   { key: "name", label: "Name", auto: "name" },
   { key: "email", label: "Email", type: "email", auto: "email" },
 ];
-
-const inputCls =
-  "block w-full border-0 border-b border-ink/60 bg-transparent pr-0 pl-2 py-3 text-xl text-ink placeholder:text-muted outline-none focus:outline-none focus:border-accent focus:border-b-2 focus-visible:outline-none focus-visible:ring-0 aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-accent";
 
 export default function Contact() {
   const [values, setValues] = useState<Values>(empty);
@@ -91,16 +88,7 @@ export default function Contact() {
   };
 
   return (
-    <>
-      <Separator />
-      <section
-        id="contact"
-        className="px-gutter py-[clamp(4rem,10vw,10rem)]"
-      >
-        <h2 className="t1 text-ink">
-          Let&apos;s talk.
-        </h2>
-
+    <Section id="contact" title="Let's Talk.">
       <div className="mt-[clamp(3rem,6vw,6rem)]">
         <div className="max-w-3xl">
           <noscript>
@@ -115,7 +103,7 @@ export default function Contact() {
           >
             {fields.map((f) => (
               <div key={f.key}>
-                <label htmlFor={`f-${f.key}`} className="t9 text-muted">
+                <label htmlFor={`f-${f.key}`} className="t8 text-muted">
                   {f.label}
                 </label>
                 <input
@@ -130,13 +118,13 @@ export default function Contact() {
                   onChange={(e) => set(f.key, e.target.value)}
                   aria-invalid={errors[f.key] ? true : undefined}
                   aria-describedby={errors[f.key] ? `e-${f.key}` : undefined}
-                  className={inputCls}
+                  className="block w-full border-0 border-b border-inverse/60 bg-transparent py-3 pr-0 pl-2 text-xl text-inverse outline-none placeholder:text-muted focus:border-b-2 focus:border-primary focus:outline-none focus-visible:ring-0 focus-visible:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-primary"
                 />
                 {errors[f.key] && (
                   <p
                     id={`e-${f.key}`}
                     role="alert"
-                    className="mt-2 mono text-ink"
+                    className="t8 mt-2 text-inverse"
                   >
                     ↑ {errors[f.key]}
                   </p>
@@ -144,7 +132,7 @@ export default function Contact() {
               </div>
             ))}
             <div>
-              <label htmlFor="f-message" className="t9 text-muted">
+              <label htmlFor="f-message" className="t8 text-muted">
                 Message
               </label>
               <textarea
@@ -159,10 +147,10 @@ export default function Contact() {
                 onChange={(e) => set("message", e.target.value)}
                 aria-invalid={errors.message ? true : undefined}
                 aria-describedby={errors.message ? "e-message" : undefined}
-                className={`${inputCls} resize-y`}
+                className="block w-full resize-y border-0 border-b border-inverse/60 bg-transparent py-3 pr-0 pl-2 text-xl text-inverse outline-none placeholder:text-muted focus:border-b-2 focus:border-primary focus:outline-none focus-visible:ring-0 focus-visible:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-primary"
               />
               {errors.message && (
-                <p id="e-message" role="alert" className="mt-2 mono text-ink">
+                <p id="e-message" role="alert" className="t8 mt-2 text-inverse">
                   ↑ {errors.message}
                 </p>
               )}
@@ -186,14 +174,14 @@ export default function Contact() {
             </div>
 
             {submitError && (
-              <p role="alert" className="mono text-ink">
+              <p role="alert" className="t8 text-inverse">
                 {submitError}
               </p>
             )}
             <button
               type="submit"
               disabled={pending}
-              className="bg-ink px-8 py-4 t9 text-paper transition-colors hover:bg-accent hover:text-[#111110] disabled:cursor-wait disabled:opacity-60"
+              className="t8 bg-inverse px-8 py-4 text-base transition-colors hover:bg-primary hover:text-inverse disabled:cursor-wait disabled:opacity-60"
             >
               {pending ? "Sending…" : "Send message"}
             </button>
@@ -205,7 +193,7 @@ export default function Contact() {
         {toast && (
           <motion.div
             role="status"
-            className="fixed right-4 bottom-4 left-4 z-50 flex items-center justify-between gap-6 bg-ink px-5 py-4 mono text-paper sm:left-auto sm:max-w-sm"
+            className="t8 fixed right-4 bottom-4 left-4 z-50 flex items-center justify-between gap-6 bg-inverse px-5 py-4 text-base sm:left-auto sm:max-w-sm"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
@@ -222,7 +210,6 @@ export default function Contact() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
-  </>
+    </Section>
   );
 }

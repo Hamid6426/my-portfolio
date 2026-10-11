@@ -1,6 +1,7 @@
 import { educationData } from "@/data/education.data";
 import Section from "./Section";
 import { Separator } from "./Separator";
+import { Slide } from "./Motion";
 
 export default function Education() {
   return (
@@ -14,11 +15,13 @@ export default function Education() {
 
           return (
             <li key={ed.id ?? ed.title}>
-              {i > 0 && <Separator className="mb-6" />}
+              <Slide inView animation="slide-left">
+                {i > 0 && <Separator className="mb-6" />}
 
-              <p className="t3">{displayHeading}</p>
-              <p className="mt-1 t5 text-muted">{ed.institution}</p>
-              <p className="mt-1 t5 text-muted">{ed.graduation}</p>
+                <p className="t3">{displayHeading}</p>
+                <p className="t5 mt-1 text-muted">{ed.institution}</p>
+                <p className="t5 mt-1 text-muted">{ed.graduation}</p>
+              </Slide>
             </li>
           );
         })}

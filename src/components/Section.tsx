@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Separator } from "./Separator";
+import { Slide } from "./Motion";
 
 export function Section({
   id,
@@ -11,12 +11,14 @@ export function Section({
   children: ReactNode;
 }>) {
   return (
-      <section id={id} className="px-[5%] pb-48">
-        <h2 className="mb-12 t2">
+    <section id={id} className="px-[5%] pb-48">
+      <h2 className="t2 mb-12">
+        <Slide inView animation="slide-up-section" className="block">
           {title}
-        </h2>
-        {children}
-      </section>
+        </Slide>
+      </h2>
+      {children}
+    </section>
   );
 }
 

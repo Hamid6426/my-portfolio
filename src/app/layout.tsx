@@ -16,8 +16,14 @@ const inter = localFont({
 
 const bricolage = localFont({
   src: [
-    { path: "../fonts/Bricolage_Grotesque/static/BricolageGrotesque-Bold.ttf", weight: "700" },
-    { path: "../fonts/Bricolage_Grotesque/static/BricolageGrotesque-ExtraBold.ttf", weight: "800" },
+    {
+      path: "../fonts/Bricolage_Grotesque/static/BricolageGrotesque-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../fonts/Bricolage_Grotesque/static/BricolageGrotesque-ExtraBold.ttf",
+      weight: "800",
+    },
   ],
   variable: "--font-bricolage",
   display: "swap",
@@ -66,9 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${bricolage.variable}`}>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

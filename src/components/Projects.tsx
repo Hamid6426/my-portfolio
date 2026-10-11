@@ -1,4 +1,5 @@
 import { projectsData } from "../data/projects.data";
+import { Slide } from "./Motion";
 import Section from "./Section";
 import { Separator } from "./Separator";
 
@@ -9,34 +10,37 @@ export default function Projects() {
         {projectsData.map((p) => (
           <li key={p.id ?? p.title}>
             <Separator />
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${p.title} (opens in a new tab)`}
-              className="group grid grid-cols-12 items-start gap-x-6 gap-y-6 py-8 lg:py-12 cursor-pointer"
+            <Slide
+              inView
+              animation="slide-left"
+              className="grid grid-cols-12 items-start gap-6 py-12"
             >
-              <div className="col-span-12 transition-transform duration-300 ease-out group-hover:translate-x-3 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 lg:col-span-9">
-                <h3 className="t3">
-                  {p.title}
-                </h3>
-                <p className="mt-4 max-w-[54ch] t5 text-muted">
+              <div className="col-span-12 lg:col-span-9">
+                <h3 className="t3">{p.title}</h3>
+                <p className="t5 mt-4 max-w-[54ch] text-muted">
                   {p.description}
                 </p>
-                <div className="mt-4 t8 text-muted">
+                <div className="t7 mt-4 text-muted">
                   <p>{p.tags.join(" · ")}</p>
                 </div>
               </div>
 
               <div className="col-span-12 flex justify-end lg:col-span-3 lg:h-full lg:items-end">
-                <span
-                  aria-hidden="true"
-                  className="font-heading font-extrabold text-4xl transition-colors group-hover:text-ink lg:text-6xl"
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${p.title} (opens in a new tab)`}
                 >
-                  ↗
-                </span>
+                  <span
+                    aria-hidden="true"
+                    className="font-heading text-4xl font-extrabold transition-colors group-hover:text-inverse lg:text-6xl"
+                  >
+                    ↗
+                  </span>
+                </a>
               </div>
-            </a>
+            </Slide>
           </li>
         ))}
       </ul>

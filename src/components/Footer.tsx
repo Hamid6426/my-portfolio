@@ -7,8 +7,6 @@ import { contactData } from "@/data/contact.data";
 import { nav } from "@/data/navbar.data";
 import { Separator } from "./Separator";
 
-const link = "hover:text-[#E2441D]";
-
 function CopyButton({
   text,
   label,
@@ -44,7 +42,7 @@ function CopyButton({
       onClick={handleCopy}
       aria-label={copied ? `Copied ${label}` : `Copy ${label}`}
       title={copied ? "Copied!" : `Copy ${label}`}
-      className="inline-flex items-center justify-center p-1 text-[#DCD3BD]/60 transition-colors hover:text-[#E2441D]"
+      className="inline-flex items-center justify-center p-1 text-base/60 transition-colors hover:text-primary"
     >
       {copied ? (
         <svg
@@ -55,7 +53,7 @@ function CopyButton({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-3.5 text-accent"
+          className="size-3.5 text-primary"
           aria-hidden="true"
         >
           <path d="M20 6 9 17l-5-5" />
@@ -118,13 +116,13 @@ export default function Footer() {
   }[];
 
   return (
-    <footer className="bg-[#111110] px-gutter pt-8 text-[#DCD3BD]">
-      <div className="flex flex-col gap-6 pb-6 t9">
+    <footer className="bg-inverse px-[5%] pt-8 text-base">
+      <div className="t8 flex flex-col gap-6 pb-6">
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {nav.map((item) => (
               <li key={item.id}>
-                <a href={`#${item.section}`} className={link}>
+                <a href={`#${item.section}`} className="hover:text-primary">
                   {item.label}
                 </a>
               </li>
@@ -140,7 +138,7 @@ export default function Footer() {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
-                className={link}
+                className="hover:text-primary"
               >
                 {item.label} ↗
               </a>
@@ -149,11 +147,11 @@ export default function Footer() {
         </div>
       </div>
 
-      <Separator className="border-[#DCD3BD]/20" />
+      <Separator className="border-base/20" />
 
-      <div className="flex flex-col gap-2 py-8 t9 text-[#DCD3BD]/65 sm:flex-row sm:justify-between">
+      <div className="t8 flex flex-col gap-2 py-8 text-base/65 sm:flex-row sm:justify-between">
         <p>© 2026 {aboutData.fullName}</p>
-        <a href="#top" className={link}>
+        <a href="#top" className="hover:text-primary">
           Back to top ↑
         </a>
       </div>
