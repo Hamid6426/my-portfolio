@@ -28,7 +28,7 @@ Navigation scrolls to the Work, About, Experience, and Contact sections. The Dow
 
 The contact form sends to `/api/contact-submission`. Copy `.env.example` to `.env` and configure the SMTP values to enable delivery. Failures keep the visitor's message available for retry; success is shown only after the server confirms delivery. Run the API regression tests with `bun test`.
 
-Set `NEXT_PUBLIC_SITE_URL` to the deployed site's origin (for example, `https://your-domain.com`) to generate absolute Open Graph URLs. The local default is `http://localhost:3000`.
+Set `NEXT_PUBLIC_BASE_URL` to the deployed site's origin (for example, `https://your-domain.com`) to generate absolute Open Graph URLs. The local default is `http://localhost:3000`.
 
 ## Browser accessibility checks
 

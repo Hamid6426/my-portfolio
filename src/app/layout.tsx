@@ -23,10 +23,16 @@ const bricolage = localFont({
   display: "swap",
 });
 
+function siteUrl(): string {
+  if (process.env.NODE_ENV === "development") {
+    return "http://localhost:3000";
+  } else {
+    return process.env.NEXT_PUBLIC_BASE_URL!;
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl()),
   title: `${aboutData.fullName} | ${aboutData.role}`,
   description: aboutData.longSummary,
   authors: [{ name: aboutData.fullName }],
