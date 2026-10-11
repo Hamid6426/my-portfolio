@@ -50,82 +50,47 @@ export default async function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
           textAlign: "center",
-          maxWidth: 580,
           padding: "20px 24px",
         }}
       >
-        {/* Rounded portrait with signature accent border */}
+        {/* Prominent circular portrait with signature accent border */}
         <div
           style={{
             display: "flex",
-            width: 170,
-            height: 170,
+            width: 290,
+            height: 290,
             borderRadius: 9999,
             overflow: "hidden",
-            border: "4px solid #E2441D",
-            boxShadow: "0 12px 32px rgba(17, 17, 16, 0.15)",
+            border: "6px solid #E2441D",
+            boxShadow: "0 20px 48px rgba(17, 17, 16, 0.22)",
             marginBottom: 24,
           }}
         >
           <img
             src={`data:image/jpeg;base64,${portrait}`}
             alt=""
-            width={170}
-            height={170}
+            width={290}
+            height={290}
             style={{ objectFit: "cover", objectPosition: "top" }}
           />
         </div>
 
-        {/* Wordmark badge */}
+        {/* Prominent Hamid. wordmark */}
         <div
           style={{
             display: "flex",
-            fontSize: 22,
-            letterSpacing: 2,
-            color: "#524D45",
-            marginBottom: 8,
-            textTransform: "uppercase",
+            alignItems: "baseline",
+            fontSize: 64,
+            fontWeight: 800,
+            letterSpacing: -2,
+            lineHeight: 1,
+            color: "#111110",
           }}
         >
           {aboutData.preferredName}
           <span style={{ color: "#E2441D" }}>.</span>
-        </div>
-
-        {/* Full Name */}
-        <div
-          style={{
-            fontSize: 48,
-            letterSpacing: -1.5,
-            lineHeight: 1.1,
-            color: "#111110",
-            marginBottom: 12,
-          }}
-        >
-          {aboutData.fullName}
-        </div>
-
-        {/* Role */}
-        <div
-          style={{
-            fontSize: 24,
-            lineHeight: 1.2,
-            color: "#111110",
-            marginBottom: 10,
-          }}
-        >
-          {aboutData.role}
-        </div>
-
-        {/* Location badge / text */}
-        <div
-          style={{
-            display: "flex",
-            fontSize: 18,
-            color: "#524D45",
-          }}
-        >
-          {aboutData.location}
         </div>
       </div>
     </div>,
