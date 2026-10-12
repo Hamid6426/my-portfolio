@@ -28,7 +28,7 @@ export function VerticalNameCard({ open, x, y }: CardMotionProps) {
         <motion.div
           id="profile-card"
           role="tooltip"
-          className="pointer-events-none fixed top-0 left-0 z-40 flex w-[min(18rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl bg-inverse text-base shadow-2xl xl:hidden"
+          className="pointer-events-none fixed top-0 left-0 z-40 flex w-[min(17rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-xl bg-inverse text-base shadow-2xl xl:hidden"
           style={{ x, y }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -109,7 +109,7 @@ export default function Hero() {
       <Slide
         key={line}
         delay={index * 0.2}
-        className="hero-name-line t1 block pr-[5%] text-left"
+        className="hero-name-line md:max-w-2xl lg:max-w-none t1 block pr-[5%] text-left"
       >
         {line}
       </Slide>
@@ -207,7 +207,7 @@ export default function Hero() {
           download="Mian_Hamid_Ur_Rehman_Full_Stack_Developer_CV.pdf"
           aria-label="Download CV"
           title="Download CV"
-          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2"
         >
           <Icon name="fileDownload" className="size-6 md:size-10" />
         </a>
@@ -227,7 +227,7 @@ export default function Hero() {
                 ? "noopener noreferrer"
                 : undefined
             }
-            className="flex size-12 shrink-0 items-center justify-center rounded-full border border-inverse transition-colors hover:bg-inverse hover:text-base md:size-16"
+            className="flex size-11 shrink-0 items-center justify-center rounded-full border border-inverse transition-colors hover:bg-inverse hover:text-base md:size-16"
           >
             <Icon name={link.icon as IconName} className="size-6 md:size-8" />
           </a>
@@ -249,7 +249,7 @@ export default function Hero() {
           aria-describedby={open ? "profile-card" : undefined}
           aria-label="Show Profile Card"
           title="Show Profile Card"
-          className="flex size-12 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2 xl:hidden"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full bg-inverse text-base transition-colors hover:bg-primary md:size-20 xl:mb-2 xl:hidden"
         >
           <Icon name="profile" className="size-6 md:size-10" />
         </button>
