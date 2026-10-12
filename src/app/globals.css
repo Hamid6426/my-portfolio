@@ -147,7 +147,7 @@ h3 {
 
 /* SECTION TITLES */
 .t2 {
-  @apply font-heading text-[14vw] leading-[0.9] font-extrabold tracking-tighter min-[384px]:text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem];
+  @apply font-heading text-[14vw] leading-[0.9] font-extrabold tracking-tighter min-[384px]:text-[3.5rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem] xl:text-[7.5rem];
 }
 
 /* SECTION ITEM TITLES */
