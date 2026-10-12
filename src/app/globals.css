@@ -137,7 +137,7 @@ h3 {
 
 /* HERO AND LET'S TALK */
 .t1 {
-  @apply font-heading text-[20vw] leading-[0.8] font-extrabold tracking-tighter min-[384px]:text-[7rem] sm:text-[8rem] md:text-[9rem] lg:text-[10rem] xl:text-[11rem];
+  @apply font-heading text-[20vw] leading-[0.8] font-extrabold tracking-tighter min-[384px]:text-[5rem] min-[448px]:text-[6rem] min-[512px]:text-[7rem] sm:text-[8.1rem] md:text-[9rem] lg:text-[10rem] xl:text-[12rem];
 }
 
 .hero-name-line::selection {
@@ -170,12 +170,12 @@ h3 {
   @apply font-body text-[4vw] leading-snug font-medium tracking-tight min-[384px]:text-[0.75rem] sm:text-[1.875rem] md:text-[1.125rem] lg:text-[1.3125rem] xl:text-[1.5rem];
 }
 
-/* Skills */
+/* Mono for Skills */
 .t7 {
   @apply font-mono text-[4vw] leading-relaxed font-normal tracking-tight min-[384px]:text-[0.75rem] sm:text-[1.875rem] md:text-[1.125rem] lg:text-[1.3125rem] xl:text-[1.5rem];
 }
 
-/* input labels, most of footer */
+/* Mono for input labels, most of footer and the profile card */
 .t8 {
-  @apply font-mono text-[2vw] leading-relaxed font-normal tracking-tight uppercase min-[384px]:text-[0.5rem] sm:text-[0.6rem] md:text-[0.7rem] lg:text-[0.8rem] xl:text-[0.9rem];
+  @apply font-mono text-[2.75vw] leading-relaxed font-normal tracking-tight uppercase min-[384px]:text-[0.7rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1rem] xl:text-[1.1rem];
 }

@@ -19,7 +19,7 @@ export const aboutData: AboutData = {
   fullName: "Mian Hamid Ur Rehman",
   preferredName: "Hamid",
   role: "Full Stack Developer & Team Lead",
-  status: "Currently working at CodeSwift, developing Neptune EHSS",
+  status: "Currently working at CodeSwift, developing Neptune EHSS & leading the team.",
   oneLiner: "Thoughtful code. Real-world impact.",
   shortSummary:
     "2+ years of experience building enterprise SaaS and SEO-focused web apps across the full stack, accelerated by AI agents.",
